@@ -1,0 +1,10 @@
+# Copyright 2020 Ball Aerospace & Technologies Corp.
+# All Rights Reserved.
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: streaming-cosmos-auth
+type: Opaque
+data:
+  password: Y29zbW9zc2VydmljZQ==

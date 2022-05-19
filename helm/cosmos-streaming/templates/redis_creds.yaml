@@ -1,0 +1,13 @@
+# Copyright 2020 Ball Aerospace & Technologies Corp.
+# All Rights Reserved.
+
+# enterprise-redis/README.md has instructions on using this file
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: streaming-redis-creds
+type: Opaque
+data:
+  username: Y29zbW9z # Leave this line as-is
+  password: Y29zbW9zcGFzc3dvcmQ=

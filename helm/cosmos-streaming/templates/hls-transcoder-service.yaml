@@ -1,0 +1,15 @@
+# Copyright 2020 Ball Aerospace & Technologies Corp.
+# All Rights Reserved.
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "cosmos.name" . }}
+spec:
+  type: ClusterIP
+  selector:
+    app: {{ template "cosmos.name" . }}
+  ports:
+    - protocol: TCP
+      targetPort: 11935
+      port: 11935

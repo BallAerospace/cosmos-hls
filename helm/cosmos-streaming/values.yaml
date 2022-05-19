@@ -1,0 +1,21 @@
+# Copyright 2020 Ball Aerospace & Technologies Corp.
+# All Rights Reserved.
+
+global:
+  # aws information for if it ever runs in aws
+  aws:
+    enabled: false
+    account: ""
+    region: ""
+  # or source a different registry information
+  image:
+    registry: "k3d-myregistry.localhost:12345"
+
+cosmos:
+  installationName: "cosmos"
+  scope: "DEFAULT"
+  s3PublicUrl: "http://localhost:2900/files"
+
+transcoder:
+  outputFormats: "1920x1080@5000k"
+  channelsPerStream: "'2'" # extra single quotes are needed because helm doesn't like integers

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "cosmos.name" . }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ template "cosmos.name" . }}
+  template:
+    # metadata.labels get applied to the newly created pods
+    metadata:
+      labels:
+        app: {{ template "cosmos.name" . }}
+    spec:
+      containers:
+        - name: {{ template "cosmos.name" . }}
+          image: "{{ include "cosmos.registry" . }}/cosmos-hls:latest"
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 11935
+          env:
+{{ include "transcoder.env" . | indent 12 }}
+{{ include "cosmos.env" . | indent 12 }}
+{{ include "cosmos.redis-env" . | indent 12 }}
+{{ include "cosmos.minio-env" . | indent 12 }}
+{{ include "cosmos.service-password" . | indent 12 }}

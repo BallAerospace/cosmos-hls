@@ -1,0 +1,11 @@
+# Copyright 2020 Ball Aerospace & Technologies Corp.
+# All Rights Reserved.
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: streaming-minio-creds
+type: Opaque
+data:
+  username: Y29zbW9zbWluaW8=
+  password: Y29zbW9zbWluaW9wYXNzd29yZA==

@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "cosmos.name" . }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ template "cosmos.name" . }}
+  template:
+    # metadata.labels get applied to the newly created pods
+    metadata:
+      labels:
+        app: {{ template "cosmos.name" . }}
+    spec:
+      volumes:
+        - name: sls-conf
+          configMap:
+            name: sls-config-file
+            items:
+            - key: sls.conf
+              path: sls.conf
+      containers:
+        - name: {{ template "cosmos.name" . }}
+          image: "ravenium/srt-live-server:latest"
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 1935
+          volumeMounts:
+            - name: sls-conf
+              mountPath: /etc/sls/sls.conf
+              subPath: sls.conf

@@ -1,0 +1,20 @@
+# Set VARIABLEs here to allow variation in your plugin
+# See https://cosmosc2.com/docs/v5/plugins for more information
+
+# --- Example formats for choosing a target bitrate ---
+# Quality   Resolution  bitrate (low motion)  bitrate (high motion)
+# 240p	    426x240	    400k	                600k
+# 360p	    640x360	    700k	                900k
+# 480p	    854x480	    1250k	                1600k
+# 720p	    1280x720	  2500k	                3200k
+# 720p@60	  1280x720	  3500k	                4400k
+# 1080p	    1920x1080	  4500k	                5300k
+# 1080p@60  1920x1080	  5800k	                7400k
+# 4k	      3840x2160	  14000k	              18200k
+# 4k@60 	  3840x2160	  23000k	              29500k
+
+
+MICROSERVICE HLS_STREAM hls-stream
+  CONTAINER cosmos-hls
+  WORK_DIR .
+  CMD ruby /cosmos/plugins/hls-stream/transcoder.rb "test stream" "srt://52.244.204.75:1935?streamid=output/live/teststream" "http://localhost:2900/files" "files" "1024x768@5000k" "ultrafast" "2"

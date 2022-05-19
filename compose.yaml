@@ -1,0 +1,23 @@
+version: '3'
+services:
+  srt-live-server:
+    image: ravenium/srt-live-server
+    ports: 
+      - "1935:1935/udp"
+    volumes:
+      - ./srt-live-server/sls.conf:/etc/sls/sls.conf
+      - ./srt-live-server/logs:/logs
+    restart: "unless-stopped"
+
+  hls-transcoder:
+    image: "cosmos-hls"
+    build:
+      context: "cosmos-hls"
+    restart: "unless-stopped"
+    env_file:
+      - "./base.env"
+
+networks:
+  default:
+    external: true
+    name: cosmos_default

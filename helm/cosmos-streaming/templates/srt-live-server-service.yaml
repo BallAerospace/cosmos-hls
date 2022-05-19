@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "cosmos.name" . }}
+spec:
+  type: LoadBalancer
+  selector:
+    app: {{ template "cosmos.name" . }}
+  ports:
+    - port: 1935
+      protocol: UDP

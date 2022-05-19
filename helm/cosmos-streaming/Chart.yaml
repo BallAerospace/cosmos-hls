@@ -1,0 +1,12 @@
+# Copyright 2020 Ball Aerospace & Technologies Corp.
+# All Rights Reserved.
+
+apiVersion: v2
+name: cosmos-streaming
+description: A Helm chart for video streaming in COSMOS
+type: application
+version: 5.0.0 # Chart version
+appVersion: 5.0.0 # COSMOS application version
+keywords:
+  - cosmos
+  - streaming
